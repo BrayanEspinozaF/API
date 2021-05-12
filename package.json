@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "2.0.0",
+  "description": "Practica 1 de unidad 3... Api REST",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Brayan Espinoza Fernandez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mssql": "^7.0.0",
+    "mysql": "^2.18.1"
+  }
+}
