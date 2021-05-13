@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const config = {
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     database: 'api',
 };
 
@@ -12,4 +12,4 @@ const config = {
 const pool = mysql.createPool(config);
 
 //Export the pool
-modulo.exports = pool;
+module.exports = pool;
