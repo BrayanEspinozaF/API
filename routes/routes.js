@@ -81,6 +81,14 @@ app.get('/escuelas', (request, response) =>{
         response.send(result);
     });
 });
+  //agregar escuela
+  app.post('/escuela', (request, response) =>{
+    pool.query('INSERT INTO escuela SET ?', request.body, (error, result) =>{
+        if(error) throw error;
+
+        response.status(201).send(`User added with ID: ${result.insertId}`);
+    });
+});
 
 //exportar router
 module.exports = router;
