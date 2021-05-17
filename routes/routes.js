@@ -17,7 +17,7 @@ const router = app =>{
             response.send(result);
         });
     });
-
+    //mostrar por id
     app.get('/users/:id', (request, response) => {
         const id = request.params.id;
 
@@ -65,6 +65,17 @@ const router = app =>{
 //mostrar todos los usuarios
 app.get('/escuelas', (request, response) =>{
     pool.query('SELECT * FROM escuelas', (error, result) =>{
+        if(error) throw error;
+
+        response.send(result);
+    });
+});
+
+ //mostrar por id
+ app.get('/escuelas/:id', (request, response) => {
+    const id = request.params.id;
+
+    pool.query('SELECT * FROM escuelas WHERE id =  ?', id, (error, result) => {
         if(error) throw error;
 
         response.send(result);
