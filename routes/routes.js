@@ -48,7 +48,7 @@ const router = app =>{
         });
     });
 
-    //el;iminar usuario
+    //eliminar usuario
     app.delete('/users/:id', (request, response) =>{
         const id = request.params.id;
 
@@ -82,8 +82,8 @@ app.get('/escuelas', (request, response) =>{
     });
 });
   //agregar escuela
-  app.post('/escuela', (request, response) =>{
-    pool.query('INSERT INTO escuela SET ?', request.body, (error, result) =>{
+  app.post('/escuelas', (request, response) =>{
+    pool.query('INSERT INTO escuelas SET ?', request.body, (error, result) =>{
         if(error) throw error;
 
         response.status(201).send(`School added with ID: ${result.insertId}`);
@@ -91,13 +91,24 @@ app.get('/escuelas', (request, response) =>{
 });
 
     //actualizar escuela
-    app.put('/escuela/:id', (request, response) =>{
+    app.put('/escuelas/:id', (request, response) =>{
         const id = request.params.id;
 
-        pool.query('UPDATE escuela SET ? WHERE id = ?', [request.body, id],(error, result) => {
+        pool.query('UPDATE escuelas SET ? WHERE id = ?', [request.body, id],(error, result) => {
             if(error) throw error;
 
             response.send('school updated succesfully');
+        });
+    });
+
+    //eliminar escuela
+    app.delete('/escuelas/:id', (request, response) =>{
+        const id = request.params.id;
+
+        pool.query('DELETE FROM escuelas WHERE id = ?', id ,(error, result) => {
+            if(error) throw error;
+
+            response.send('School deleted');
         });
     });
 
