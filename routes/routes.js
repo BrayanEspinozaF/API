@@ -86,9 +86,20 @@ app.get('/escuelas', (request, response) =>{
     pool.query('INSERT INTO escuela SET ?', request.body, (error, result) =>{
         if(error) throw error;
 
-        response.status(201).send(`User added with ID: ${result.insertId}`);
+        response.status(201).send(`School added with ID: ${result.insertId}`);
     });
 });
+
+    //actualizar escuela
+    app.put('/escuela/:id', (request, response) =>{
+        const id = request.params.id;
+
+        pool.query('UPDATE escuela SET ? WHERE id = ?', [request.body, id],(error, result) => {
+            if(error) throw error;
+
+            response.send('school updated succesfully');
+        });
+    });
 
 //exportar router
 module.exports = router;
