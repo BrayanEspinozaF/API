@@ -61,5 +61,15 @@ const router = app =>{
     
 }
 
+//rutas para el manejo de escuelas
+//mostrar todos los usuarios
+app.get('/escuelas', (request, response) =>{
+    pool.query('SELECT * FROM escuelas', (error, result) =>{
+        if(error) throw error;
+
+        response.send(result);
+    });
+});
+
 //exportar router
 module.exports = router;
